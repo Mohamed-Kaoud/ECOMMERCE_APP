@@ -8,12 +8,12 @@ import RedisService from 'src/common/service/redis.service';
 import { RedisModule } from 'src/common/Redis/redis.module';
 import TokenService from 'src/common/service/token.service';
 import { JwtService } from '@nestjs/jwt';
-
+import S3Service from 'src/common/service/S3.service';
 
 @Module({
   imports: [userModel, RedisModule],
   controllers: [UserController],
-  providers: [UserService, UserRepository,RedisService,TokenService,JwtService
+  providers: [UserService, UserRepository,RedisService,TokenService,JwtService, S3Service
   ],
 })
 export class UserModule {}

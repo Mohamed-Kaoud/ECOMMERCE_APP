@@ -1,4 +1,4 @@
-import { ValidatorConstraint, ValidatorConstraintInterface, ValidationArguments, Validate, IsString, IsNotEmpty, IsEmail, Length, IsInt, ValidationOptions, registerDecorator, ValidateIf, IsOptional } from 'class-validator';
+import { ValidatorConstraint, ValidatorConstraintInterface, ValidationArguments, Validate, IsString, IsNotEmpty, IsEmail, Length, IsInt, ValidationOptions, registerDecorator, ValidateIf, IsOptional, IsEnum, Matches } from 'class-validator';
 
 @ValidatorConstraint({ name: 'MatchKey', async: false })
 export class MatchKey implements ValidatorConstraintInterface {
@@ -59,3 +59,44 @@ export class signInDTO {
   @IsNotEmpty()
   password: string;
 }
+
+export class confirmEmailDTO {
+  @IsEmail()
+  @IsNotEmpty()
+  email: string;
+  @IsNotEmpty()
+  @Matches(/^\d{6}$/,{
+    message: "OTP code must be exactly 6 digits 🔴"
+  })
+  code: string;
+}
+
+export class resendOtpDTO {
+
+  @IsEmail()
+  @IsNotEmpty()
+  email: string;
+}
+
+export class resetPasswordDTO {
+
+  @IsEmail()
+  @IsNotEmpty()
+  email: string;
+  @IsString()
+  @IsNotEmpty()
+  password: string;
+  @IsNotEmpty()
+  @Matches(/^\d{6}$/,{
+    message: "OTP code must be exactly 6 digits 🔴"
+  })
+  code: string
+}
+
+export class forgetPasswordDTO {
+  @IsEmail()
+  @IsNotEmpty()
+  email: string;
+}
+
+

@@ -12,7 +12,7 @@ export const sendEmail = async (mailOptions: Mail.Options) => {
   });
 
   const info = await transporter.sendMail({
-    from: `"Mohamed Elsayed" <${process.env.EMAIL}>`, 
+    from: `"Mohamed kaoud" <${process.env.EMAIL}>`, 
     ...mailOptions
   });
 
